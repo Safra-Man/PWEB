@@ -1,0 +1,105 @@
+body {
+    font-family: "Segoi UI", Tahoma;
+    margin: 0;
+    padding: 10px;
+    place-items: center;
+}
+
+textarea {
+    width: 100%;
+    /* ocupa toda a largura da célula */
+    height: 200px;
+    /* ocupa toda a altura disponível da célula */
+    box-sizing: border-box;
+    /* inclui padding/border no cálculo */
+    text-align: justify;
+    padding: 8px;
+}
+
+.container {
+    display: flex;
+    /*mais importante*/
+    align-items: center;
+    width: 80%;
+    margin: 0 auto;
+    gap: 15px;
+    /* espaco entre os cards*/
+    justify-content: center;
+}
+
+.card {
+    /* tamanho inicial do item */
+    flex-basis: calc(100% / 3 - 20px);
+    background-color: HSL(221, 42%, 43%);
+    color: aliceblue;
+    text-align: center;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px 2px rgba(125, 6, 6, 0.2),
+        5px 5px 10px 5px #187b8d;
+    /* 2 camadas */
+    height: 200px;
+    justify-content: center;
+
+}
+
+.card h2 {
+    margin-top: 0;
+    justify-content: center;
+}
+
+.card p {
+    margin-top: 10px 0;
+    justify-content: center;
+    /* alinha no eixo horizontal */
+    align-items: center;
+    /* alinha no eixo vertical */
+}
+
+button {
+    border-radius: 5px;
+    box-shadow: 1px 1px 23px 2px #ffffffff;
+}
+
+.container-box {
+
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: auto;
+    grid-template-rows: auto;
+    grid-template-areas:
+        'a b c c'
+        'a b d d'
+        'a b d d';
+    justify-content: center;
+    /* alinha no eixo horizontal */
+    align-items: center;
+    /* alinha no eixo vertical */
+
+}
+
+.box {
+    background-color: rgb(143, 173, 210);
+    border-radius: 5px;
+}
+
+.a {
+    grid-area: a;
+    text-align: center;
+}
+
+.b {
+    grid-area: b;
+    height: 300px;
+    text-align: center;
+}
+
+.c {
+    grid-area: c;
+    text-align: center;
+}
+
+.d {
+    grid-area: d;
+    text-align: center;
+}
