@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Atividade 7</title>
+</head>
+<body>
+    <script>
+
+        const escolha = ["pedra", "papel", "tesoura"];
+        const user = prompt("Escreva sua escolha:\npedra, papel ou tesoura").toLowerCase();
+        const random = Math.random();
+
+        let comp = "";
+        if (random < 1 / 3) {
+            comp = "pedra";
+        } else if (random < 2 / 3) {
+            comp = "papel";
+        } else {
+            comp = "tesoura";
+        }
+
+        let resultado = "";
+        if (user === comp) {
+            resultado = "O computador escolheu o mesmo que você!";
+        } else if (
+            (user === "pedra" && comp === "tesoura") ||
+            (user === "tesoura" && comp === "papel") ||
+            (user === "papel" && comp === "pedra")
+        ) {
+            resultado = "Venceu! " + user + " ganhou de " + comp + ".";
+        } else if (escolha.includes(user)) {
+            resultado = "Perdeu! " + comp + " ganhou de " + user + ".";
+        } else {
+            resultado = "Escolha inválida.";
+        }
+
+        alert(
+            "Você escolheu: " +
+            user +
+            "\nComputador escolheu: " +
+            comp +
+            "\n" +
+            resultado
+        );
+    </script>
+</body>
+</html>
