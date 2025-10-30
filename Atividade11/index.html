@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Atividade 11</title>
+</head>
+<body>
+    <h1>Atividade - Formas de Criar Objetos</h1>
+    <p>Aula 06<br></p>
+    <script>// Criando função construtora
+        function Funcionario(matricula, nome, funcao) {
+            this.Matricula = matricula;
+            this.Nome = nome;
+            this.Funcao = funcao;
+        }
+
+        // Criando instância do objeto
+        var Funcionario1 = new Funcionario("54321", "Carlos Oliveira", "Analista");
+
+        // Exibindo as propriedades
+        alert("Matrícula: " + Funcionario1.Matricula);
+        alert("Nome: " + Funcionario1.Nome);
+        alert("Função: " + Funcionario1.Funcao);
+
+        // Criando objeto com construtor Object()
+        var Funcionario1 = new Object();
+        Funcionario1.Matrícula = "67890";
+        Funcionario1.Nome = "Maria Santos";
+        Funcionario1.Função = "Gerente";
+
+        // Exibindo as propriedades
+        alert("Matrícula: " + Funcionario1.Matricula);
+        alert("Nome: " + Funcionario1.Nome);
+        alert("Função: " + Funcionario1.Funcao);
+
+        // Criando objeto com notação literal
+        var Funcionario1 = {
+            Matricula: "12345",
+            Nome: "João Silva",
+            Funcao: "Desenvolvedor"
+        };
+
+        // Exibindo as propriedades
+        alert("Matrícula: " + Funcionario1.Matricula);
+        alert("Nome: " + Funcionario1.Nome);
+        alert("Função: " + Funcionario1.Funcao);            
+    </script>
+</body>
+</html>

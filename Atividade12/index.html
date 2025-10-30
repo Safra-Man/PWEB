@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atividade 12</title>
+    </head>
+<body>
+    <div>
+        <h1>Atividade 12</h1>
+        
+        <h2>1. Função Construtora - Retângulo</h2>
+        <button onclick="exercicio1()">Calcular Área do Retângulo</button>
+        
+        <h2>2. Classes com Herança - Contas Bancárias</h2>
+        <button onclick="exercicio2()">Criar Conta Corrente e Poupança</button>
+    </div>
+
+    <script>
+        // Função Construtora para Retângulo
+        function Retangulo(x, y) {
+            this.base = x;
+            this.altura = y;
+            
+            // Método para calcular a área
+            this.calcularArea = function() {
+                return this.base * this.altura;
+            };
+        }
+
+        function exercicio1() {
+            // Recebendo dados via prompt
+            let base = parseFloat(prompt("Digite a base:"));
+            let altura = parseFloat(prompt("Digite a altura:"));      
+            
+            if (isNaN(base) || isNaN(altura) || base <= 0 || altura <= 0) {
+                alert("Insira valores válidos!");
+                return;
+            }
+            
+            // Criando objeto Retangulo
+            let meuRetangulo = new Retangulo(base, altura);
+            
+            // Executando método que calcula a área
+            let area = meuRetangulo.calcularArea();
+            
+            // Exibindo resultado
+            alert("Base: " + meuRetangulo.base + 
+                  "\nAltura: " + meuRetangulo.altura + 
+                  "\nÁrea: " + area);
+        }
+
+        // EX 2
+        // Classe Base: Conta
+        class Conta {
+            constructor() {
+                this._nomeCorrentista = "";
+                this._banco = "";
+                this._numeroConta = "";
+                this._saldo = 0;
+            }
+                        
+            get nomeCorrentista() {
+                return this._nomeCorrentista;
+            }
+            
+            get banco() {
+                return this._banco;
+            }
+            
+            get numeroConta() {
+                return this._numeroConta;
+            }
+            
+            get saldo() {
+                return this._saldo;
+            }
+            
+            
+            set nomeCorrentista(nome) {
+                this._nomeCorrentista = nome;
+            }
+            
+            set banco(banco) {
+                this._banco = banco;
+            }
+            
+            set numeroConta(numero) {
+                this._numeroConta = numero;
+            }
+            
+            set saldo(valor) {
+                this._saldo = parseFloat(valor);
+            }
+            
+            exibirDados() {
+                return "Nome: " + this.nomeCorrentista + 
+                       "\nBanco: " + this.banco + 
+                       "\nNúmero da Conta: " + this.numeroConta + 
+                       "\nSaldo: " + this.saldo.toFixed(2);
+            }
+        }
+
+        // Classe Corrente (herda de Conta)
+        class Corrente extends Conta {
+            constructor() {
+                super();
+                this._saldoEspecial = 0;
+            }
+            
+            get saldoEspecial() {
+                return this._saldoEspecial;
+            }
+            
+            set saldoEspecial(valor) {
+                this._saldoEspecial = parseFloat(valor);
+            }
+            
+            exibirDados() {
+                return super.exibirDados() + 
+                       "\nSaldo Especial: R$ " + this.saldoEspecial.toFixed(2) +
+                       "\nTotal Disponível: R$ " + (this.saldo + this.saldoEspecial).toFixed(2);
+            }
+        }
+
+        // Classe Poupanca (herda de Conta)
+        class Poupanca extends Conta {
+            constructor() {
+                super();
+                this._juros = 0;
+                this._dataVencimento = "";
+            }
+            
+            get juros() {
+                return this._juros;
+            }
+            
+            set juros(valor) {
+                this._juros = parseFloat(valor);
+            }
+            
+            get dataVencimento() {
+                return this._dataVencimento;
+            }
+            
+            set dataVencimento(data) {
+                this._dataVencimento = data;
+            }
+            
+            exibirDados() {
+                return super.exibirDados() + 
+                       "\nJuros: " + this.juros + "%" +
+                       "\nData de Vencimento: " + this.dataVencimento;
+            }
+        }
+
+        function exercicio2() {            
+            let contaCorrente = new Corrente();
+            
+            alert("Cadastro de Conta Corrente");
+            contaCorrente.nomeCorrentista = prompt("Nome do Correntista:");
+            contaCorrente.banco = prompt("Nome do Banco:");
+            contaCorrente.numeroConta = prompt("Número da Conta:");
+            contaCorrente.saldo = prompt("Saldo:");
+            contaCorrente.saldoEspecial = prompt("Saldo Especial:");
+                
+            let contaPoupanca = new Poupanca();
+            
+            alert("Cadastro de Conta Poupança");
+            contaPoupanca.nomeCorrentista = prompt("Nome do Correntista:");
+            contaPoupanca.banco = prompt("Nome do Banco:");
+            contaPoupanca.numeroConta = prompt("Número da Conta:");
+            contaPoupanca.saldo = prompt("Saldo:");
+            contaPoupanca.juros = prompt("Taxa de Juros (%):");
+            contaPoupanca.dataVencimento = prompt("Data de Vencimento (dd/mm/aaaa):");
+            
+            alert("DADOS DA CONTA CORRENTE\n\n" + contaCorrente.exibirDados());
+            alert("DADOS DA CONTA POUPANCA\n\n" + contaPoupanca.exibirDados());
+        }
+    </script>
+</body>
+</html>

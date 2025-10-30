@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Atividade 13</title>
+</head>
+<body>
+    <h1 id="titulo">Janela Fechada</h1>
+    
+    <img id="imagemJanela" 
+         src="janela-fechada.jpg" 
+         alt="Janela" 
+         width="400">
+
+    <script>
+        alert("Abra a Janela!");
+        const imagemJanela = document.getElementById('imagemJanela');
+        const titulo = document.getElementById('titulo');
+        let janelaQuebrada = false;
+
+        // Mouse sobre a imagem - abre a janela
+        imagemJanela.onmouseover = function() {
+            if (!janelaQuebrada) {
+                imagemJanela.src = 'janela-aberta.jpg';
+                titulo.textContent = 'Janela Aberta';
+            }
+        };
+
+        // Mouse sai da imagem - fecha a janela
+        imagemJanela.onmouseout = function() {
+            if (!janelaQuebrada) {
+                imagemJanela.src = 'janela-fechada.jpg';
+                titulo.textContent = 'Janela Fechada';
+            }
+        };
+
+        // Clique na imagem - quebra a janela
+        imagemJanela.onclick = function() {
+            imagemJanela.src = 'janela-quebrada.jpg';
+            titulo.textContent = 'Janela Quebrada';
+            janelaQuebrada = true;
+        };
+    </script>
+</body>
+</html>
